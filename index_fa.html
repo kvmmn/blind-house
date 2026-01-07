@@ -163,7 +163,23 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 40px var(--spacing);
+            padding: 80px var(--spacing) 40px var(--spacing);
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 30px;
+            left: var(--spacing);
+            /* Left for Persian page */
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--ink);
+            border: 1px solid var(--border);
+            padding: 5px 10px;
+            border-radius: 20px;
+            z-index: 100;
         }
 
         .intro-text {
