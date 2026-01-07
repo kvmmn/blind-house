@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BLIND HOUSE | 2025 Exhibition Proposal</title>
+
+    <!-- Vazirmatn Font for Persian -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DESIGN SYSTEM: SWISS INTERNATIONAL STYLE --- */
+        :root {
+            --bg: #F4F4F4;
+            /* Gallery Wall Off-White */
+            --ink: #050505;
+            /* Archival Black */
+            --grey: #757575;
+            /* Caption Grey */
+            --border: #D1D1D1;
+            /* Grid Lines */
+            --font-main: 'Vazirmatn', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            /* Keep mono for numbers/English if needed, or Vazirmatn Medium */
+            --spacing: 4vw;
+            /* Responsive Gutter */
+        }
+
+        /* --- RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            /* Slightly increased for Persian */
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: clamp(4rem, 12vw, 16rem);
+            letter-spacing: -0.02em;
+            /* Adjusted for Persian */
+            line-height: 0.95;
+            /* Adjusted for Persian */
+            margin-right: -0.06em;
+            /* Flipped margin */
+            margin-left: 0;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            /* Slightly bolder for Persian readability */
+            margin-bottom: 20px;
+        }
+
+        .mono {
+            font-family: var(--font-main);
+            /* Use Vazirmatn for Persian "mono" equivalency in style */
+            font-weight: 300;
+            font-size: 0.85rem;
+            /* Adjusted size */
+            letter-spacing: 0;
+            /* text-transform: uppercase; Persian doesn't have uppercase */
+            color: var(--grey);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Keep English numbers or codes in mono font if desirable, but generally Vazirmatn handles mixed well */
+
+        .caption {
+            font-family: var(--font-main);
+            font-size: 0.75rem;
+            font-weight: 300;
+            margin-top: 10px;
+            color: var(--grey);
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid transparent;
+            padding-top: 5px;
+        }
+
+        /* --- LAYOUT GRID (Sticky Sidebar) --- */
+        .chapter {
+            display: flex;
+            border-top: 1px solid var(--border);
+            min-height: 100vh;
+        }
+
+        .chapter-sidebar {
+            width: 30%;
+            padding: var(--spacing);
+            border-left: 1px solid var(--border);
+            /* Flipped border */
+            border-right: none;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--bg);
+            z-index: 10;
+        }
+
+        .chapter-gallery {
+            width: 70%;
+            padding: var(--spacing);
+        }
+
+        /* --- IMAGE CONTAINERS --- */
+        .img-block {
+            margin-bottom: 120px;
+            width: 100%;
+        }
+
+        .img-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        /* Interaction: Reveal color/detail on hover */
+        .img-block:hover img,
+        .img-grid div:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* 2-Column Grid for Detail Shots */
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 120px;
+        }
+
+        .img-grid img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        /* --- SECTIONS --- */
+        header {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px var(--spacing);
+        }
+
+        .intro-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            max-width: 900px;
+            font-weight: 300;
+            line-height: 1.5;
+            margin: var(--spacing) 0;
+        }
+
+        /* --- TEAM GRID --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: var(--spacing);
+            border-top: 1px solid var(--border);
+        }
+
+        .team-member img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        /* --- INVESTMENT FOOTER --- */
+        .footer-ask {
+            padding: var(--spacing);
+            background: #111;
+            color: #fff;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            top: 40px;
+            left: var(--spacing);
+            /* Left for Persian page */
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--ink);
+            border: 1px solid var(--border);
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .lang-toggle:hover {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .chapter {
+                flex-direction: column;
+            }
+
+            .chapter-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-left: none;
+                /* Reset flip */
+                border-bottom: 1px solid var(--border);
+            }
+
+            .chapter-gallery {
+                width: 100%;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 18vw;
+            }
+
+            .footer-ask div[style*="flex"] {
+                flex-direction: column;
+            }
+
+            .footer-ask div[style*="text-align: left"] {
+                /* Flipped alignment target */
+                text-align: right !important;
+                /* Keep aligned to start/right */
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="lang-toggle">English</a>
+
+    <!-- 1. HERO HEADER (عنوان اصلی) -->
+    <header>
+        <div style="display: flex; justify-content: space-between;" class="mono">
+            <span>نسخه: ۲۰۲۵/۰۴</span>
+            <span>تهران — پاریس</span>
+            <span>وضعیت: پروپوزال</span>
+        </div>
+
+        <h1>تاریک‌<br>خانـه</h1>
+
+        <div class="mono">
+            کیوریتور: شاهد صفاری<br>
+            باستان‌شناسی تصویری از خانه صادق هدایت
+        </div>
+    </header>
+
+    <!-- 2. INTRODUCTION (بیانیه و مقدمه) -->
+    <section style="padding: 0 var(--spacing);">
+        <div style="border-top: 1px solid var(--ink);"></div>
+        <p class="intro-text">
+            «صادق هدایت خانه پدری را نه یک پناهگاه، که فضایی وهم‌آلود، پیچیده و سرشار از تنهایی می‌پنداشت.»
+            این نمایشگاه، ردیابی ۱۵۰ سال انزوای معماری است؛ روایتی که توسط دو نسل از اساتید عکاسی ایران، بهمن جلالی و
+            مهدی وثوق‌نیا، مستند شده است.
+        </p>
+
+        <!-- Portrait: Sadegh Hedayat -->
+        <div class="img-block" style="max-width: 600px; margin-top: 60px;">
+            <img src="images/hedayat-portrait.jpg" alt="Sadegh Hedayat">
+            <div class="caption">
+                <span>سوژه</span>
+                <span>صادق هدایت (۱۲۸۱-۱۳۳۰)<br>نویسنده، روشنفکر و راوی بوف کور</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ARCHIVE I (آرشیو اول: بهمن جلالی) -->
+    <section class="chapter">
+        <aside class="chapter-sidebar">
+            <div>
+                <span class="mono">کلکسیون اول</span>
+                <h2>اتاق انتظار</h2>
+            </div>
+            <div class="mono">
+                هنرمند: بهمن جلالی<br>
+                سال: ۱۳۵۳ (۱۹۷۴)<br>
+                بافت: پیش از انقلاب
+            </div>
+        </aside>
+
+        <div class="chapter-gallery">
+            <!-- Full: Entrance -->
+            <div class="img-block">
+                <img src="images/jalali-entrance-71.jpg" alt="Dark Entrance">
+                <div class="caption"><span>تصویر ۰۱</span><span>ورودی تاریک‌خانه (نما از داخل به بیرون)</span></div>
+            </div>
+
+            <!-- Grid: Details -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/jalali-doorway-tiles.jpg" alt="Tiles">
+                    <div class="caption"><span>تصویر ۰۲</span><span>جزئیات آستانه در و کاشی‌ها</span></div>
+                </div>
+                <div>
+                    <img src="images/jalali-window-frame.jpg" alt="Window">
+                    <div class="caption"><span>تصویر ۰۳</span><span>قاب‌بندی فضای تهی (پنجره)</span></div>
+                </div>
+            </div>
+
+            <!-- Full: Facade -->
+            <div class="img-block">
+                <img src="images/jalali-facade.jpg" alt="Facade">
+                <div class="caption"><span>تصویر ۰۴</span><span>نمای بیرونی خانه پدری</span></div>
+            </div>
+
+            <!-- Full: Ruins -->
+            <div class="img-block">
+                <img src="images/jalali-courtyard-ruins.jpg" alt="Ruins">
+                <div class="caption"><span>تصویر ۰۵</span><span>حیاط و حوض خشکیده (مخروبه)</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ARCHIVE II (آرشیو دوم: مهدکودک) -->
+    <section class="chapter">
+        <aside class="chapter-sidebar">
+            <div>
+                <span class="mono">کلکسیون دوم</span>
+                <h2>دوران مهدکودک</h2>
+                <p style="font-size: 0.9rem; margin-top: 20px; color: #666; line-height: 1.6;">
+                    پس از انقلاب، این خانه با تغییر کاربری به «مهدکودک صادقیه» تبدیل شد. بهمن جلالی در دهه ۷۰ شمسی
+                    بازگشت تا تقابل سورئال نقاشی‌های کودکانه و دیوارهای فروریخته قاجاری را ثبت کند.
+                </p>
+            </div>
+            <div class="mono">
+                هنرمند: بهمن جلالی<br>
+                سال: دهه ۱۳۷۰<br>
+                بافت: دوران پس از انقلاب
+            </div>
+        </aside>
+
+        <div class="chapter-gallery">
+            <!-- Full: Rabbits -->
+            <div class="img-block">
+                <img src="images/kindergarten-mural.jpg" alt="Rabbit Mural">
+                <div class="caption"><span>تصویر ۰۶</span><span>دیوارنگاره خرگوش‌ها (روی آجرچینی قاجاری)</span></div>
+            </div>
+
+            <!-- Grid: Interiors -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/kindergarten-hallway.jpg" alt="Hallway">
+                    <div class="caption"><span>تصویر ۰۷</span><span>راهروی مهدکودک</span></div>
+                </div>
+                <div>
+                    <img src="images/kindergarten-streamers.jpg" alt="Streamers">
+                    <div class="caption"><span>تصویر ۰۸</span><span>تزئینات جشن ۲۲ بهمن</span></div>
+                </div>
+            </div>
+
+            <!-- Full: Chairs -->
+            <div class="img-block">
+                <img src="images/kindergarten-chairs.jpg" alt="Chairs">
+                <div class="caption"><span>تصویر ۰۹</span><span>صندلی‌های پلاستیکی انباشته شده</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ARCHIVE III (آرشیو سوم: سکوت) -->
+    <section class="chapter">
+        <aside class="chapter-sidebar">
+            <div>
+                <span class="mono">کلکسیون سوم</span>
+                <h2>مطالعه‌ای برای فراموشی</h2>
+                <p style="font-size: 0.9rem; margin-top: 20px; color: #666; line-height: 1.6;">
+                    در سال ۱۳۹۷، مهدی وثوق‌نیا وارد این فضای حالا متروکه شد. لنز دوربین او سکوت سنگین، سانسورهای اعمال
+                    شده بر کاشی‌ها و نمادهای ناخواسته‌ای که باقی مانده‌اند را ثبت کرده است.
+                </p>
+            </div>
+            <div class="mono">
+                هنرمند: مهدی وثوق‌نیا<br>
+                سال: ۱۳۹۷ (۲۰۱۸)<br>
+                بافت: وضعیت متروکه کنونی
+            </div>
+        </aside>
+
+        <div class="chapter-gallery">
+            <!-- Full: Owl -->
+            <div class="img-block">
+                <img src="images/vosoughnia-owl-mural.jpg" alt="Owl Mural">
+                <div class="caption"><span>تصویر ۱۰</span><span>نقاشی دیواری جغد (نماد ناخواسته بوف کور)</span></div>
+            </div>
+
+            <!-- Grid: Details -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/vosoughnia-entrance-door.jpg" alt="Door">
+                    <div class="caption"><span>تصویر ۱۱</span><span>در ورودی مهر و موم شده</span></div>
+                </div>
+                <div>
+                    <img src="images/vosoughnia-stained-glass.jpg" alt="Glass">
+                    <div class="caption"><span>تصویر ۱۲</span><span>بازتاب نور در شیشه‌های رنگی</span></div>
+                </div>
+            </div>
+
+            <!-- Full: Whitewash -->
+            <div class="img-block">
+                <img src="images/vosoughnia-courtyard-color.jpg" alt="Courtyard Color">
+                <div class="caption"><span>تصویر ۱۳</span><span>سفیدکاری حیاط (کتابخانه بیمارستان امیر اعلم)</span>
+                </div>
+            </div>
+
+            <!-- Grid: Censorship -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/vosoughnia-angel-tile.jpg" alt="Angel">
+                    <div class="caption"><span>تصویر ۱۴</span><span>کاشی‌کاری سانسور شده (فرشته)</span></div>
+                </div>
+                <div>
+                    <img src="images/vosoughnia-pool-detail.jpg" alt="Pool">
+                    <div class="caption"><span>تصویر ۱۵</span><span>آب سیاه و راکد استخر</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. THE TEAM (تیم کیوریتوری) -->
+    <section>
+        <div style="padding: var(--spacing);">
+            <h2>تیم کیوریتوری و هنرمندان</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="images/curator-saffari.jpg" alt="Shahed Saffari">
+                <div class="caption"><span>کیوریتور و مدیر پروژه</span><span>شاهد صفاری<br>(بنیان‌گذار گالری
+                        این‌جا)</span></div>
+            </div>
+            <div class="team-member">
+                <img src="images/jalali-portrait.jpg" alt="Bahman Jalali">
+                <div class="caption"><span>آرشیو تاریخی</span><span>بهمن جلالی<br>(۱۳۲۳-۱۳۸۸)</span></div>
+            </div>
+            <div class="team-member">
+                <img src="images/vosoughnia-portrait.jpg" alt="Mehdi Vosoughnia">
+                <div class="caption"><span>عکاسی مستند معاصر</span><span>مهدی وثوق‌نیا<br>(متولد ۱۳۵۰)</span></div>
+            </div>
+            <div class="team-member"
+                style="display: flex; align-items: center; justify-content: center; background: #EFEFEF; padding: 20px;">
+                <p class="mono" style="font-size: 0.8rem; color: #000; text-align: center; direction: ltr;">
+                    PROPOSAL 2025<br>
+                    TEHRAN — PARIS<br><br>
+                    CONTACT:<br>
+                    office@inja.gallery
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. THE PUBLICATION (سرمایه‌گذاری: کتاب) -->
+    <footer class="footer-ask">
+        <span class="mono"
+            style="color: #888; border-bottom: 1px solid #444; padding-bottom: 10px; display: inline-block;">فرصت مشارکت
+            انحصاری</span>
+
+        <div
+            style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 60px; padding-bottom: 60px; border-bottom: 1px solid #333;">
+
+            <!-- Description Side -->
+            <div style="width: 100%; max-width: 600px; margin-bottom: 40px;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; margin-bottom: 30px;">کتاب نمایشگاه.
+                </h2>
+                <p style="font-size: 1.25rem; font-weight: 300; color: #ccc; line-height: 1.6; margin-bottom: 30px;">
+                    ما پیشنهاد انتشار یک تک‌نگاشت (Monograph) دوزبانه (فارسی/انگلیسی) را داریم که به عنوان آرشیو دائمی
+                    این پروژه عمل خواهد کرد.
+                    فراتر از دیوارهای نمایشگاه، این کتاب کنتاکت‌شیت‌های دیده نشده‌ی بهمن جلالی را در کنار عکاسی
+                    کاوشگرانه مهدی وثوق‌نیا قرار می‌دهد. این اثر، تلاشی ملموس برای حفظ میراث فرهنگی بنایی است که در خطر
+                    فراموشی قرار دارد.
+                </p>
+                <div class="mono" style="color: #888; line-height: 1.8;">
+                    <strong>مشخصات فنی:</strong><br>
+                    جلد سخت با روکش پارچه‌ای (Linen) / قطع رحلی (۲۴ در ۳۰)<br>
+                    ۲۰۰ صفحه / کاغذ ۱۵۰ گرمی مون‌کن (Munken)<br>
+                    تیراژ محدود: ۱۰۰۰ نسخه
+                </div>
+            </div>
+
+            <!-- Budget Side -->
+            <div
+                style="width: 100%; max-width: 400px; text-align: left; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="mono" style="display: block; margin-bottom: 15px; color: #888;">مبلغ مورد نیاز
+                        سرمایه‌گذاری</span>
+                    <span
+                        style="font-size: 4rem; font-weight: 300; letter-spacing: -2px; direction: ltr; display: inline-block;">$25,000</span>
+                    <span style="font-size: 1.5rem; font-weight: 300; color: #666;">USD</span>
+                </div>
+
+                <div style="margin-top: 40px; text-align: left;">
+                    <span class="mono" style="display: block; color: #888; margin-bottom: 10px;">تخصیص بودجه</span>
+                    <ul class="mono" style="list-style: none; color: #bbb; line-height: 1.8; padding-right: 0;">
+                        <li>• چاپ افست و صحافی نفیس</li>
+                        <li>• ترجمه و نگارش متون کیوریتوریال</li>
+                        <li>• طراحی گرافیک و صفحه‌آرایی</li>
+                        <li>• لجستیک توزیع بین‌المللی</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div
+            style="margin-top: 100px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; direction: ltr;">
+            <div class="mono" style="font-size: 0.7rem; color: #444; margin-bottom: 10px;">
+                CONTACT FOR BANKING DETAILS<br>
+                CURATOR@PROJECT.COM
+            </div>
+            <div class="mono" style="font-size: 0.7rem; color: #444;">
+                CONFIDENTIAL // © 2025 THE BLIND HOUSE PROJECT
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
