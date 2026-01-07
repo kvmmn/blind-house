@@ -1,0 +1,10 @@
+
+# PDF source files
+*.pdf
+
+# Python virtual environment
+venv/
+__pycache__/
+
+# OS System files
+.DS_Store

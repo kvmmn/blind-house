@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BLIND HOUSE | 2025 Exhibition Proposal</title>
+
+    <style>
+        /* --- DESIGN SYSTEM: SWISS INTERNATIONAL STYLE --- */
+        :root {
+            --bg: #F4F4F4;
+            /* Gallery Wall Off-White */
+            --ink: #050505;
+            /* Archival Black */
+            --grey: #757575;
+            /* Caption Grey */
+            --border: #D1D1D1;
+            /* Grid Lines */
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            --spacing: 4vw;
+            /* Responsive Gutter */
+        }
+
+        /* --- RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-main);
+            line-height: 1.25;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: clamp(4rem, 12vw, 16rem);
+            letter-spacing: -0.04em;
+            line-height: 0.85;
+            margin-left: -0.06em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--grey);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .caption {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            margin-top: 10px;
+            color: var(--grey);
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid transparent;
+            padding-top: 5px;
+        }
+
+        /* --- LAYOUT GRID (Sticky Sidebar) --- */
+        .chapter {
+            display: flex;
+            border-top: 1px solid var(--border);
+            min-height: 100vh;
+        }
+
+        .chapter-sidebar {
+            width: 30%;
+            padding: var(--spacing);
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--bg);
+            z-index: 10;
+        }
+
+        .chapter-gallery {
+            width: 70%;
+            padding: var(--spacing);
+        }
+
+        /* --- IMAGE CONTAINERS --- */
+        .img-block {
+            margin-bottom: 120px;
+            width: 100%;
+        }
+
+        .img-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        /* Interaction: Reveal color/detail on hover */
+        .img-block:hover img,
+        .img-grid div:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* 2-Column Grid for Detail Shots */
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 120px;
+        }
+
+        .img-grid img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 0.6s ease;
+        }
+
+        /* --- SECTIONS --- */
+        header {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px var(--spacing);
+        }
+
+        .intro-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            max-width: 900px;
+            font-weight: 300;
+            line-height: 1.3;
+            margin: var(--spacing) 0;
+        }
+
+        /* --- TEAM GRID --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: var(--spacing);
+            border-top: 1px solid var(--border);
+        }
+
+        .team-member img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+
+        /* --- INVESTMENT FOOTER --- */
+        .footer-ask {
+            padding: var(--spacing);
+            background: #111;
+            color: #fff;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .chapter {
+                flex-direction: column;
+            }
+
+            .chapter-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .chapter-gallery {
+                width: 100%;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 18vw;
+            }
+
+            .footer-ask div[style*="flex"] {
+                flex-direction: column;
+            }
+
+            .footer-ask div[style*="text-align: right"] {
+                text-align: left !important;
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. HERO HEADER -->
+    <header>
+        <div style="display: flex; justify-content: space-between;" class="mono">
+            <span>Ref: 2025.04.12</span>
+            <span>Tehran — Paris</span>
+            <span>Status: Proposal</span>
+        </div>
+
+        <h1>The Blind<br>House.</h1>
+
+        <div class="mono">
+            Curated by Shahed Saffari<br>
+            A Visual Excavation of Sadegh Hedayat
+        </div>
+    </header>
+
+    <!-- 2. THE SUBJECT -->
+    <section style="padding: 0 var(--spacing);">
+        <div style="border-top: 1px solid var(--ink);"></div>
+        <p class="intro-text">
+            Sadegh Hedayat saw home not as a refuge, but as a haunting complex.
+            This exhibition traces 150 years of isolation through the architecture of his paternal house, documented by
+            two generations of Iranian masters.
+        </p>
+
+        <!-- Portrait: Sadegh Hedayat -->
+        <div class="img-block" style="max-width: 600px; margin-top: 60px;">
+            <img src="images/hedayat-portrait.jpg"
+                
+                alt="Sadegh Hedayat">
+            <div class="caption">
+                <span>THE SUBJECT</span>
+                <span>SADEGH HEDAYAT (1903-1951)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ARCHIVE I: PRE-REVOLUTION (Jalali 1971) -->
+    <section class="chapter">
+        <aside class="chapter-sidebar">
+            <div>
+                <span class="mono">Collection One</span>
+                <h2>The Waiting Room</h2>
+            </div>
+            <div class="mono">
+                Artist: Bahman Jalali<br>
+                Year: 1971<br>
+                Context: Pre-Revolution
+            </div>
+        </aside>
+
+        <div class="chapter-gallery">
+            <!-- Full: Entrance -->
+            <div class="img-block">
+                <img src="images/jalali-entrance-71.jpg"
+                    
+                    alt="Dark Entrance">
+                <div class="caption"><span>FIG 01</span><span>THE DARKROOM ENTRY</span></div>
+            </div>
+
+            <!-- Grid: Details -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/jalali-doorway-tiles.jpg"
+                        
+                        alt="Tiles">
+                    <div class="caption"><span>FIG 02</span><span>THRESHOLD DETAILS</span></div>
+                </div>
+                <div>
+                    <img src="images/jalali-window-frame.jpg"
+                        
+                        alt="Window">
+                    <div class="caption"><span>FIG 03</span><span>FRAMING THE VOID</span></div>
+                </div>
+            </div>
+
+            <!-- Full: Facade -->
+            <div class="img-block">
+                <img src="images/jalali-facade.jpg"
+                    
+                    alt="Facade">
+                <div class="caption"><span>FIG 04</span><span>THE PATERNAL HOME</span></div>
+            </div>
+
+            <!-- Full: Ruins -->
+            <div class="img-block">
+                <img src="images/jalali-courtyard-ruins.jpg"
+                     alt="Ruins">
+                <div class="caption"><span>FIG 05</span><span>THE COURTYARD</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ARCHIVE II: THE TRANSFORMATION (Jalali 1990s) -->
+    <section class="chapter">
+        <aside class="chapter-sidebar">
+            <div>
+                <span class="mono">Collection Two</span>
+                <h2>The Daycare Era</h2>
+                <p style="font-size: 0.9rem; margin-top: 20px; color: #666; line-height: 1.4;">
+                    Following the Revolution, the house was repurposed as "Sadeghiyeh Daycare."
+                    Jalali returned to document the surreal juxtaposition of childhood drawings and crumbling Qajar
+                    masonry.
+                </p>
+            </div>
+            <div class="mono">
+                Artist: Bahman Jalali<br>
+                Year: 1990s<br>
+                Context: Post-Revolution
+            </div>
+        </aside>
+
+        <div class="chapter-gallery">
+            <!-- Full: Rabbits -->
+            <div class="img-block">
+                <img src="images/kindergarten-mural.jpg"
+                    
+                    alt="Rabbit Mural">
+                <div class="caption"><span>FIG 06</span><span>THE RABBITS MURAL</span></div>
+            </div>
+
+            <!-- Grid: Interiors -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/kindergarten-hallway.jpg"
+                        
+                        alt="Hallway">
+                    <div class="caption"><span>FIG 07</span><span>NURSERY HALLWAY</span></div>
+                </div>
+                <div>
+                    <img src="images/kindergarten-streamers.jpg"
+                        
+                        alt="Streamers">
+                    <div class="caption"><span>FIG 08</span><span>REVOLUTION DAY DECOR</span></div>
+                </div>
+            </div>
+
+            <!-- Full: Chairs -->
+            <div class="img-block">
+                <img src="images/kindergarten-chairs.jpg"
+                    
+                    alt="Chairs">
+                <div class="caption"><span>FIG 09</span><span>PLASTIC STACKS</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ARCHIVE III: THE SILENCE (Vosoughnia 2018) -->
+    <section class="chapter">
+        <aside class="chapter-sidebar">
+            <div>
+                <span class="mono">Collection Three</span>
+                <h2>The Forensic Study</h2>
+                <p style="font-size: 0.9rem; margin-top: 20px; color: #666; line-height: 1.4;">
+                    In 2018, Mehdi Vosoughnia entered the now-derelict space. His lens captures the silence, the
+                    censorship, and the unintended symbols that remain.
+                </p>
+            </div>
+            <div class="mono">
+                Artist: Mehdi Vosoughnia<br>
+                Year: 2018<br>
+                Context: Modern Derelict
+            </div>
+        </aside>
+
+        <div class="chapter-gallery">
+            <!-- Full: Owl -->
+            <div class="img-block">
+                <img src="images/vosoughnia-owl-mural.jpg"
+                    
+                    alt="Owl Mural">
+                <div class="caption"><span>FIG 10</span><span>"THE BLIND OWL" SYMBOL</span></div>
+            </div>
+
+            <!-- Grid: Details -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/vosoughnia-entrance-door.jpg"
+                        
+                        alt="Door">
+                    <div class="caption"><span>FIG 11</span><span>SEALED ENTRANCE</span></div>
+                </div>
+                <div>
+                    <img src="images/vosoughnia-stained-glass.jpg"
+                        
+                        alt="Glass">
+                    <div class="caption"><span>FIG 12</span><span>STAINED GLASS</span></div>
+                </div>
+            </div>
+
+            <!-- Full: Whitewash -->
+            <div class="img-block">
+                <img src="images/vosoughnia-courtyard-color.jpg"
+                    
+                    alt="Courtyard Color">
+                <div class="caption"><span>FIG 13</span><span>THE WHITEWASH</span></div>
+            </div>
+
+            <!-- Grid: Censorship -->
+            <div class="img-grid">
+                <div>
+                    <img src="images/vosoughnia-angel-tile.jpg"
+                        
+                        alt="Angel">
+                    <div class="caption"><span>FIG 14</span><span>CENSORED TILE</span></div>
+                </div>
+                <div>
+                    <img src="images/vosoughnia-pool-detail.jpg"
+                        
+                        alt="Pool">
+                    <div class="caption"><span>FIG 15</span><span>BLACK WATER</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TEAM -->
+    <section>
+        <div style="padding: var(--spacing);">
+            <h2>The Curatorial Team</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="images/curator-saffari.jpg"
+                    
+                    alt="Shahed Saffari">
+                <div class="caption"><span>CURATOR</span><span>SHAHED SAFFARI</span></div>
+            </div>
+            <div class="team-member">
+                <img src="images/jalali-portrait.jpg"
+                     alt="Bahman Jalali">
+                <div class="caption"><span>ARCHIVE</span><span>BAHMAN JALALI</span></div>
+            </div>
+            <div class="team-member">
+                <img src="images/vosoughnia-portrait.jpg"
+                    
+                    alt="Mehdi Vosoughnia">
+                <div class="caption"><span>PHOTOGRAPHY</span><span>MEHDI VOSOUGHNIA</span></div>
+            </div>
+            <div class="team-member"
+                style="display: flex; align-items: center; justify-content: center; background: #EFEFEF; padding: 20px;">
+                <p class="mono" style="font-size: 0.6rem; color: #000; text-align: center;">
+                    INJA GALLERY<br>
+                    TEHRAN<br><br>
+                    CONTACT:<br>
+                    info@inja.gallery
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. THE PUBLICATION INVESTMENT -->
+    <footer class="footer-ask">
+        <span class="mono"
+            style="color: #888; border-bottom: 1px solid #444; padding-bottom: 10px; display: inline-block;">Exclusive
+            Partnership Opportunity</span>
+
+        <div
+            style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 60px; padding-bottom: 60px; border-bottom: 1px solid #333;">
+
+            <!-- Description Side -->
+            <div style="width: 100%; max-width: 600px; margin-bottom: 40px;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; margin-bottom: 30px;">The Publication.
+                </h2>
+                <p style="font-size: 1.25rem; font-weight: 300; color: #ccc; line-height: 1.5; margin-bottom: 30px;">
+                    We propose a definitive, bilingual monograph (Persian/English) that acts as the permanent archive of
+                    this project.
+                    Beyond the exhibition walls, this book will compile the unseen 1970s contact sheets of Bahman Jalali
+                    alongside the 2018 forensic photography of Mehdi Vosoughnia.
+                    It serves as a tangible preservation of a cultural site facing erasure.
+                </p>
+                <div class="mono" style="color: #888; line-height: 1.6;">
+                    SPECIFICATIONS:<br>
+                    Hardcover Linen / 24 x 30 cm<br>
+                    200 Pages / 150gsm Munken Paper<br>
+                    Limited Edition of 1,000 Copies
+                </div>
+            </div>
+
+            <!-- Budget Side -->
+            <div
+                style="width: 100%; max-width: 400px; text-align: right; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="mono" style="display: block; margin-bottom: 15px; color: #888;">Total Funding
+                        Requirement</span>
+                    <span style="font-size: 4rem; font-weight: 300; letter-spacing: -2px;">$25,000</span>
+                    <span style="font-size: 1.5rem; font-weight: 300; color: #666;">USD</span>
+                </div>
+
+                <div style="margin-top: 40px; text-align: right;">
+                    <span class="mono" style="display: block; color: #888; margin-bottom: 10px;">Allocation</span>
+                    <ul class="mono" style="list-style: none; color: #bbb; line-height: 1.8;">
+                        <li>Offset Printing & Binding</li>
+                        <li>Curatorial Essays & Translation</li>
+                        <li>Graphic Design & Layout</li>
+                        <li>Global Distribution Logistics</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div
+            style="margin-top: 100px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap;">
+            <div class="mono" style="font-size: 0.7rem; color: #444; margin-bottom: 10px;">
+                CONTACT FOR BANKING DETAILS<br>
+                CURATOR@PROJECT.COM
+            </div>
+            <div class="mono" style="font-size: 0.7rem; color: #444;">
+                CONFIDENTIAL // © 2025 THE BLIND HOUSE PROJECT
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
